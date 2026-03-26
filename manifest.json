@@ -1,0 +1,15 @@
+{
+  "name": "釜山自由行",
+  "short_name": "釜山旅遊",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f0f8ff",
+  "theme_color": "#0077b6",
+  "icons":[
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3125/3125826.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
