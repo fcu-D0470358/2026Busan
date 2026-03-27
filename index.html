@@ -107,22 +107,27 @@
         }
         .nav-btn:active { background-color: #E5E5EA; }
 
-        /* 底部導覽列 */
+        /* 大綱與攻略卡片 */
+        .info-box { background: var(--card-bg); border-radius: var(--radius); padding: 18px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .info-title { font-size: 16px; font-weight: 800; border-bottom: 1px solid #F2F2F7; padding-bottom: 12px; margin-bottom: 12px; }
+        .info-box p { font-size: 14px; margin-bottom: 6px; color: #3A3A3C; line-height: 1.5; }
+        .info-box strong { color: var(--accent-color); font-weight: 700; }
+        .info-box ul { padding-left: 20px; font-size: 14px; color: #3A3A3C; line-height: 1.6; }
+        
+        .overview-day-title { font-weight: 800; color: var(--accent-color); margin-bottom: 8px; font-size: 16px;}
+        .overview-item { display: flex; gap: 8px; margin-bottom: 10px; font-size: 14px; color: #3A3A3C; font-weight: 600; }
+        .overview-item::before { content: "•"; color: var(--text-muted); }
+
+        /* 底部導覽列 (5個按鈕) */
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%; max-width: 480px; background: rgba(255,255,255,0.9);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            display: flex; justify-content: space-around; padding: 12px 0 25px 0;
+            display: flex; justify-content: space-around; padding: 10px 0 25px 0;
             border-top: 1px solid rgba(0,0,0,0.05); z-index: 100;
         }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 11px; font-weight: 600; cursor: pointer; gap: 4px; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 10.5px; font-weight: 600; cursor: pointer; gap: 4px; width: 20%; }
         .nav-item.active { color: var(--accent-color); }
-        .nav-icon { font-size: 22px; }
-
-        /* 航班住宿 */
-        .info-box { background: var(--card-bg); border-radius: var(--radius); padding: 18px; margin-bottom: 15px; }
-        .info-title { font-size: 16px; font-weight: 800; border-bottom: 1px solid #F2F2F7; padding-bottom: 12px; margin-bottom: 12px; }
-        .info-box p { font-size: 14px; margin-bottom: 6px; color: #3A3A3C; }
-        .info-box strong { color: var(--accent-color); font-weight: 600; }
+        .nav-icon { font-size: 20px; }
     </style>
 </head>
 <body>
@@ -132,13 +137,59 @@
         <p>5 天 4 夜 ｜ 4/15 - 4/19</p>
     </header>
 
+    <!-- 1. 大綱分頁 -->
+    <div id="tab-overview" class="content">
+        <div style="margin-top: 10px; margin-bottom: 15px; font-size: 14px; color: var(--text-muted); font-weight: 600;">📋 五天行程總覽</div>
+        <div id="overview-list"></div>
+    </div>
+
+    <!-- 2. 行程分頁 -->
     <div id="tab-itinerary" class="content active">
         <div class="date-tabs-container" id="date-tabs"></div>
         <div id="weather-container" class="weather-widget"></div>
         <div id="itinerary-list"></div>
     </div>
 
-    <!-- 航班資訊 -->
+    <!-- 3. 攻略分頁 -->
+    <div id="tab-guide" class="content">
+        <div class="info-box">
+            <div class="info-title">🧥 四月穿搭建議</div>
+            <p>釜山四月氣溫約 <strong>11°C~18°C</strong>，早晚溫差大且海濱風強。<br>建議採<strong>「洋蔥式穿搭」</strong>：內搭短袖或薄長袖，外加防風外套、風衣或輕薄針織衫。舒適好走的球鞋是必備！</p>
+        </div>
+        <div class="info-box">
+            <div class="info-title">💰 預備現金估算 (刷卡為主)</div>
+            <p>釜山 90% 以上店家(包含餐廳、超市、咖啡廳)皆可刷卡(Apple Pay或實體信用卡)。</p>
+            <p><strong>現金用途：</strong> 傳統市場小吃攤、儲值交通卡(T-money)、應急用。</p>
+            <p><strong>建議金額：</strong> 每人換約 <strong>10萬~15萬韓元現金</strong> (約台幣 2500~3800元) 帶身上即可，其餘一律刷卡最划算。</p>
+        </div>
+        <div class="info-box">
+            <div class="info-title">🎁 必買伴手禮推薦</div>
+            <ul>
+                <li><strong>美妝保養：</strong> Olive Young (痘痘貼、Torriden精華、棉片)</li>
+                <li><strong>樂天超市：</strong> HBAF堅果、零卡軟糖、韓國海苔、麻油、Market O布朗尼</li>
+                <li><strong>特色伴手禮：</strong> 釜山紅蟹麵、甘川洞小王子文創周邊</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <div class="info-title">📱 必下載實用 APP</div>
+            <ul>
+                <li><strong>Naver Map：</strong> 韓國最強導航 (Google Map在韓國無法導航)</li>
+                <li><strong>Papago：</strong> 最精準的中韓語音/圖片翻譯神器</li>
+                <li><strong>Kakao T：</strong> 叫計程車必備 (可選上車付現)</li>
+                <li><strong>WOWPASS：</strong> 如果有辦卡，可下載管理餘額</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <div class="info-title">🧾 購物退稅注意事項</div>
+            <p>韓國單筆消費滿 <strong>15,000 韓元</strong> 即可退稅 (2024新制)。</p>
+            <ul>
+                <li><strong>市區/店內退稅：</strong> 結帳時出示護照，店員可直接扣除稅額 (Immediate Tax Refund)，最方便！</li>
+                <li><strong>機場退稅：</strong> 若店家給退稅單，請務必保留好，提早到金海機場找「Tax Free」機台刷護照辦理退稅。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. 航班資訊 -->
     <div id="tab-flight" class="content">
         <div class="info-box">
             <div class="info-title">✈️ 去程：04/15 (三)</div>
@@ -157,7 +208,7 @@
         <a href="https://www.eastarjet.com/" target="_blank" class="nav-btn" style="background-color: #D32F2F; color: white;">🌐 前往 易斯達航空 官網</a>
     </div>
 
-    <!-- 住宿資訊 -->
+    <!-- 5. 住宿資訊 -->
     <div id="tab-hotel" class="content">
         <div class="info-box">
             <div class="info-title">🏨 4/15 - 4/17 (2晚)</div>
@@ -177,10 +228,23 @@
         </div>
     </div>
 
+    <!-- 底部導覽列 -->
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="switchMainTab('itinerary', this)"><span class="nav-icon">🗓</span><span>行程</span></div>
-        <div class="nav-item" onclick="switchMainTab('flight', this)"><span class="nav-icon">✈️</span><span>航班</span></div>
-        <div class="nav-item" onclick="switchMainTab('hotel', this)"><span class="nav-icon">🏨</span><span>住宿</span></div>
+        <div class="nav-item" onclick="switchMainTab('overview', this)">
+            <span class="nav-icon">📋</span><span>大綱</span>
+        </div>
+        <div class="nav-item active" onclick="switchMainTab('itinerary', this)">
+            <span class="nav-icon">🗓</span><span>行程</span>
+        </div>
+        <div class="nav-item" onclick="switchMainTab('guide', this)">
+            <span class="nav-icon">💡</span><span>攻略</span>
+        </div>
+        <div class="nav-item" onclick="switchMainTab('flight', this)">
+            <span class="nav-icon">✈️</span><span>航班</span>
+        </div>
+        <div class="nav-item" onclick="switchMainTab('hotel', this)">
+            <span class="nav-icon">🏨</span><span>住宿</span>
+        </div>
     </div>
 
     <script>
@@ -199,11 +263,10 @@
                     { 
                         timeRange: "09:00 ~ 13:00", krName: "스파랜드 센텀시티", title: "新世界Spa Land 汗蒸幕", typeName: "放鬆", 
                         guideDesc: "韓國最高級的五星級汗蒸幕，完美舒緩紅眼航班的疲勞。<br><span class='highlight hl-order'>必體驗：戴羊角頭、喝甜米釀、吃烤雞蛋</span>", link: "https://naver.me/5Q372Aqt"
-                        // 註：拿掉 transit，在畫面上讓它與下方的巨大牛骨湯緊密相連，表示在同一區不需交通時間
                     },
                     { 
-                        timeRange: "13:00 ~ 16:00", krName: "거대곰탕 신세계 센텀시티점", title: "巨大牛骨湯", typeName: "午餐", desc: "新世界百貨店 B1美食廣場/12號出口附近",
-                        guideDesc: "釜山頂級韓牛餐廳。湯頭熬煮數十小時，呈現如牛奶般的濃郁乳白色。<br><span class='highlight hl-food'>必吃：極品濃郁韓牛骨湯</span>", link: "https://naver.me/5chuGOAf",
+                        timeRange: "13:00 ~ 16:00", krName: "신세계 센텀시티", title: "新世界百貨 逛街 & 午餐", typeName: "行程", desc: "在新世界百貨內逛街，並於 B1 美食廣場享用巨大牛骨湯",
+                        guideDesc: "【巨大牛骨湯】釜山頂級韓牛餐廳。湯頭熬煮數十小時，呈現如牛奶般的濃郁乳白色。<br><span class='highlight hl-food'>必吃：極品濃郁韓牛骨湯</span>", link: "https://naver.me/5chuGOAf",
                         transit: "🚇 地鐵 Centum City站(센텀시티역) → 田浦站(전포역) / 約 35 分鐘"
                     },
                     { 
@@ -212,7 +275,7 @@
                     },
                     { 
                         timeRange: "19:00 ~ 21:00", krName: "올드맨션 서면전포점", title: "老花園 Old Mansion (烤肉)", typeName: "晚餐", desc: "備案：83獬豸",
-                        notice: "⚠️ 只能刷卡！最後點餐為 21:30 (備案餐廳為23:40)。請注意地鐵末班車為 23:59！",
+                        notice: "⚠️ 只能刷卡！最後點餐為 21:30 (備案為23:40)。請注意地鐵末班車為 23:59！",
                         guideDesc: "主打熟成豬肉，肉汁豐盈且富有嚼勁，全程有專人代烤服務。<br><span class='highlight hl-food'>必吃：頂級厚切五花肉、豬頸肉</span>", link: "https://naver.me/GoD7vQS0" 
                     }
                 ]
@@ -311,6 +374,7 @@
                     },
                     { 
                         timeRange: "16:00 ~ 17:30", krName: "송도해상케이블카", title: "松島纜車", typeName: "景點", 
+                        notice: "⚠️ 建議有體力再去！",
                         guideDesc: "橫跨海面的跨海纜車，建議選擇「水晶車廂」感受腳下就是大海的刺激感！", link: "https://naver.me/Fmf6KBhZ",
                         transit: "🚌 搭乘公車至地鐵 扎嘎其站(자갈치역) 回飯店 / 約 30 分鐘"
                     },
@@ -330,35 +394,35 @@
                 events:[
                     { 
                         timeRange: "09:30 ~ 10:00", krName: "더베이먼트 호텔", title: "飯店退房", typeName: "住宿", desc: "10點前退房", link: "https://naver.me/xP8eF1LR",
-                        transit: "🚶 步行至租車點 / 約 10 分鐘"
+                        transit: "🚇 地鐵 扎嘎其站(자갈치역) → 草梁站(초량역) 再步行 / 約 20 分鐘"
                     },
                     { 
                         timeRange: "10:15 ~ 10:30", krName: "롯데렌터카", title: "樂天租車", typeName: "交通", desc: "取車開始自駕行", link: "https://naver.me/5xjpJw7F",
-                        transit: "🚗 駕車 / 約 40 分鐘"
+                        transit: "🚗 駕車 / 約 15 分鐘"
                     },
                     { 
                         timeRange: "11:00 ~ 13:00", krName: "감천문화마을", title: "甘川洞文化村", typeName: "景點", 
                         guideDesc: "滿山彩色階梯式房屋，被稱為「韓國的馬丘比丘」。<br><span class='highlight hl-buy'>必拍：與小王子與沙漠狐狸雕像合影</span>", link: "https://naver.me/FPn5Lbco",
-                        transit: "🚗 駕車 / 約 50 分鐘"
+                        transit: "🚗 駕車 / 約 30 分鐘"
                     },
                     { 
                         timeRange: "14:00 ~ 15:30", krName: "기장 해녀촌", title: "海女之家", typeName: "午餐", 
                         guideDesc: "坐在海邊品嚐海女們親手捕撈的生猛海鮮！體驗最道地的釜山漁村文化。<br><span class='highlight hl-food'>必吃：鮮甜熱鮑魚粥、生章魚、綜合海鮮盤</span>", link: "https://naver.me/xrSQ8eJW",
-                        transit: "🚗 駕車 / 約 15 分鐘"
+                        transit: "🚗 駕車 / 約 10 分鐘"
                     },
                     { 
                         timeRange: "15:40 ~ 16:40", krName: "해동용궁사", title: "海東龍宮寺", typeName: "景點", 
                         guideDesc: "韓國唯一建在海岸岩石上的寺廟，景色壯麗無比。據說在這裡誠心許願非常靈驗。", link: "https://naver.me/58NdWaSm",
-                        transit: "🚗 駕車 / 約 5 分鐘"
+                        transit: "🚗 駕車 / 約 10 分鐘"
                     },
                     { 
                         timeRange: "16:50 ~ 17:50", krName: "스카이라인루지 부산", title: "Skyline Luge 斜坡車", typeName: "玩樂", 
                         guideDesc: "大人小孩都能瘋狂的斜坡滑車！搭乘吊椅上山，然後沿著多個彎道一路飆風衝刺下山。", link: "https://naver.me/IDFUcLWo",
-                        transit: "🚗 駕車前往機場 / 約 50 分鐘"
+                        transit: "🚗 駕車前往 樂天租車機場站 / 約 50 分鐘"
                     },
                     { 
                         timeRange: "18:50 ~ 19:00", krName: "롯데렌터카 김해공항", title: "樂天租車 機場站", typeName: "交通", desc: "還車，準備前往機場", link: "https://naver.me/xYN6tx23",
-                        transit: "🚶 步行 / 約 5 分鐘"
+                        transit: "🚇 輕軌 德斗站(덕두역) → 機場站(공항역) / 約 5 分鐘"
                     },
                     { 
                         timeRange: "19:05 ~ 22:00", krName: "김해국제공항", title: "金海機場 辦理登機", typeName: "機場", desc: "搭乘易斯達航空回溫暖的家！", link: "https://naver.me/GNRjwFwb" 
@@ -373,6 +437,23 @@
             document.querySelectorAll('.bottom-nav .nav-item').forEach(n => n.classList.remove('active'));
             el.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 動態生成「大綱」頁面
+        function initOverview() {
+            const container = document.getElementById('overview-list');
+            let html = '';
+            itineraryData.forEach(day => {
+                html += `
+                    <div class="info-box" style="padding: 15px;">
+                        <div class="overview-day-title">${day.dayName} · ${day.fullDate.split(' ')[0]}</div>
+                `;
+                day.events.forEach(event => {
+                    html += `<div class="overview-item">${event.title}</div>`;
+                });
+                html += `</div>`;
+            });
+            container.innerHTML = html;
         }
 
         function initDateTabs() {
@@ -422,7 +503,6 @@
                     </div>
                 `;
                 
-                // 判斷是否有交通資訊，如果沒有 (如 Spa Land 到牛骨湯) 就只顯示一個小間距
                 if (event.transit) {
                     eventsHtml += `
                         <div class="transit-block">
@@ -438,7 +518,10 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        window.onload = () => { initDateTabs(); };
+        window.onload = () => { 
+            initDateTabs(); 
+            initOverview();
+        };
     </script>
 </body>
 </html>
