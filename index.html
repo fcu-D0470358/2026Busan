@@ -68,12 +68,17 @@
         .time { font-size: 15px; font-weight: 800; color: var(--accent-color); font-variant-numeric: tabular-nums; }
         .type-badge { font-size: 11px; padding: 4px 10px; border-radius: 8px; background-color: #F2F2F7; color: var(--text-muted); font-weight: 700; }
         
-        .kr-name { font-size: 12.5px; color: var(--text-muted); margin-bottom: 4px; display: flex; align-items: center; gap: 5px; font-weight: 500;}
+        .kr-name { font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; font-weight: 500;}
         .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px; }
         .desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
 
         /* 圖文導覽內容 */
-        .card-img { width: 100%; height: 170px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; }
+        .card-img { 
+            width: 100%; height: 180px; object-fit: cover; 
+            border-radius: 12px; margin-bottom: 12px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            border: 1px solid #E5E5EA;
+        }
         .guide-content { background-color: #F9F9FB; border-radius: 12px; padding: 14px; margin-bottom: 12px; border-left: 3px solid #D1D1D6; }
         .guide-text { font-size: 13.5px; color: #3A3A3C; line-height: 1.6; }
         
@@ -197,19 +202,19 @@
                     { timeRange: "09:30 ~ 10:00", krName: "207스테이 코리아", title: "民宿起床出門", typeName: "行程", desc: "預計10點出門", link: "https://naver.me/xl0H8R3M" },
                     { 
                         timeRange: "10:10 ~ 11:10", krName: "오프커스 베이커리 카페", title: "Off Keoseu 咖啡廳", typeName: "早餐", 
-                        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+                        image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop",
                         guideDesc: "西面超大型複合式咖啡廳，擁有華麗的歐式外觀與戶外泳池造景。每日現烤超過50種麵包與甜點，先稍微墊個胃。<br><span class='highlight hl-order'>必點：各式可頌、冰美式</span>", 
                         link: "https://naver.me/xQe286YO" 
                     },
                     { 
                         timeRange: "11:50 ~ 13:50", krName: "해운대 전통시장", title: "海雲台傳統市場", typeName: "逛街", 
-                        image: "https://images.unsplash.com/photo-1590575396657-3f822164e235?q=80&w=800&auto=format&fit=crop",
+                        image: "https://images.unsplash.com/photo-1588675402664-964c05e54d3d?q=80&w=800&auto=format&fit=crop",
                         guideDesc: "聚集釜山道地小吃的熱鬧街區，價格親民。也是購買便宜水果(如草莓、水蜜桃)的好地方。<br><span class='highlight hl-food'>必吃：堅果糖餅、盲鰻、辣炒年糕、魚板串</span>", 
                         link: "https://naver.me/GeUO60dx" 
                     },
                     { 
                         timeRange: "14:30 ~ 14:40", krName: "해운대 블루라인파크 (미포)", title: "海岸列車 (尾浦→青沙浦)", typeName: "交通", 
-                        image: "https://images.unsplash.com/photo-1510844355160-2fb07bf9af75?q=80&w=800&auto=format&fit=crop",
+                        image: "https://images.unsplash.com/photo-1532054041183-48b488ceb9e1?q=80&w=800&auto=format&fit=crop",
                         guideDesc: "釜山最夯的復古海岸列車！軌道沿著絕美海岸線行駛，車廂座位全面向海，美得像宮崎駿動畫場景。<br><span class='highlight hl-buy'>必拍：復古車廂與無敵海景合影</span>", 
                         link: "https://naver.me/Gwpsyvot" 
                     },
@@ -254,7 +259,7 @@
                     { timeRange: "18:40 ~ 20:00", krName: "더베이먼트 호텔", title: "飯店 Check-in", typeName: "住宿", desc: "回飯店安頓與自由活動", link: "https://naver.me/xP8eF1LR" },
                     { 
                         timeRange: "20:00 ~ 21:30", krName: "부평족발", title: "富平豬腳", typeName: "晚餐", 
-                        image: "https://images.unsplash.com/photo-1628268909376-e8c4df29bed2?q=80&w=800&auto=format&fit=crop",
+                        image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=800&auto=format&fit=crop",
                         guideDesc: "富平洞豬腳街的超人氣名店！釜山特有的吃法，清爽解膩，越吃越上癮。<br><span class='highlight hl-food'>必吃：涼拌豬腳(冷菜豬腳)、辣味豬腳</span>", 
                         link: "https://naver.me/xeASv1sX" 
                     }
@@ -297,6 +302,7 @@
                     },
                     { 
                         timeRange: "14:00 ~ 15:30", krName: "기장 해녀촌", title: "海女之家", typeName: "午餐", 
+                        image: "https://images.unsplash.com/photo-1560155016-bd4879ae8f21?q=80&w=800&auto=format&fit=crop",
                         guideDesc: "坐在海邊品嚐海女們親手捕撈的生猛海鮮！體驗最道地的釜山漁村文化。<br><span class='highlight hl-food'>必吃：鮮甜熱鮑魚粥、生章魚、綜合海鮮盤</span>", 
                         link: "https://naver.me/xrSQ8eJW" 
                     },
