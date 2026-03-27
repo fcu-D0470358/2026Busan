@@ -191,20 +191,40 @@
 
     <!-- 4. 航班資訊 -->
     <div id="tab-flight" class="content">
+        <!-- 去程航班 -->
         <div class="info-box">
             <div class="info-title">✈️ 去程：04/15 (三)</div>
             <p><strong>航空公司：</strong> 易斯達航空 (Eastar Jet)</p>
             <p><strong>時間：</strong> 02:40 桃園(TPE) ➔ 06:10 金海(PUS)</p>
             <p><strong>訂位代碼：</strong>[童]TF5M5B / [吳]QYF1GQ</p>
-            <p style="color:#FF3B30; font-size:12px; margin-top:8px;">*無提供飛機餐</p>
+            
+            <!-- 去程行李區塊 -->
+            <div class="guide-content" style="margin-top: 12px; margin-bottom: 0; padding: 12px 14px;">
+                <p style="font-weight: 800; color: var(--accent-color); font-size: 13.5px; margin-bottom: 8px;">🧳 行李額度</p>
+                <p style="font-size: 13px; margin-bottom: 6px;"><strong>童家：</strong>手提 10kg × 4 ｜ 托運 15kg × 2</p>
+                <p style="font-size: 13px; margin-bottom: 0;"><strong>吳家：</strong>手提 10kg × 3 ｜ 托運 15kg × 3</p>
+            </div>
+            
+            <p style="color:#FF3B30; font-size:12px; margin-top:12px;">*無提供飛機餐</p>
         </div>
+
+        <!-- 回程航班 -->
         <div class="info-box">
             <div class="info-title">✈️ 回程：04/19 (日)</div>
             <p><strong>航空公司：</strong> 易斯達航空 (Eastar Jet)</p>
             <p><strong>時間：</strong> 22:00 金海(PUS) ➔ 00:20 桃園(TPE)</p>
-            <p><strong>訂位代碼：</strong>[童]O2G4PL /[吳]TDKW4U</p>
-            <p style="color:#FF3B30; font-size:12px; margin-top:8px;">*無提供飛機餐</p>
+            <p><strong>訂位代碼：</strong>[童]O2G4PL / [吳]TDKW4U</p>
+            
+            <!-- 回程行李區塊 -->
+            <div class="guide-content" style="margin-top: 12px; margin-bottom: 0; padding: 12px 14px;">
+                <p style="font-weight: 800; color: var(--accent-color); font-size: 13.5px; margin-bottom: 8px;">🧳 行李額度</p>
+                <p style="font-size: 13px; margin-bottom: 6px;"><strong>童家：</strong>手提 10kg × 4 ｜ 托運 15kg × 4</p>
+                <p style="font-size: 13px; margin-bottom: 0;"><strong>吳家：</strong>手提 10kg × 3 ｜ 托運 15kg × 3</p>
+            </div>
+            
+            <p style="color:#FF3B30; font-size:12px; margin-top:12px;">*無提供飛機餐</p>
         </div>
+        
         <a href="https://www.eastarjet.com/" target="_blank" class="nav-btn" style="background-color: #D32F2F; color: white;">🌐 前往 易斯達航空 官網</a>
     </div>
 
@@ -439,7 +459,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 動態生成「大綱」頁面
         function initOverview() {
             const container = document.getElementById('overview-list');
             let html = '';
