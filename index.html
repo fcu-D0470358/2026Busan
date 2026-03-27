@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>釜山自由行 2026</title>
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#F2F2F7">
     <style>
-        /* iOS 原生極簡風格 (Native Minimalist) */
+        /* iOS 原生極簡風格 */
         :root {
             --bg-color: #F2F2F7;
             --card-bg: #FFFFFF;
@@ -32,11 +31,10 @@
             padding-bottom: 95px; position: relative;
         }
 
-        /* 頂部標題置中 */
         header {
             padding: 20px 20px 10px; background-color: var(--bg-color);
             position: sticky; top: 0; z-index: 10;
-            text-align: center; /* 標題置中 */
+            text-align: center;
         }
         header h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
         header p { font-size: 13px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
@@ -45,7 +43,7 @@
         .content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 滑動分頁 (Tab) */
+        /* 滑動分頁 */
         .date-tabs-container {
             margin-top: 15px; margin-bottom: 20px; overflow-x: auto; white-space: nowrap;
             display: flex; gap: 10px; padding-bottom: 5px; scrollbar-width: none; 
@@ -65,7 +63,7 @@
         /* 行程卡片 */
         .card {
             background: var(--card-bg); border-radius: var(--radius); padding: 18px;
-            margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03); position: relative; z-index: 2;
         }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
         .time { font-size: 15px; font-weight: 800; color: var(--accent-color); font-variant-numeric: tabular-nums; }
@@ -75,23 +73,27 @@
         .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px; }
         .desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
 
-        /* 交通與注意事項提示框 */
-        .transport-info {
-            background-color: #F0F8FF; color: #007AFF; padding: 10px 12px;
-            border-radius: 10px; font-size: 13px; font-weight: 600; margin-bottom: 12px;
-            display: flex; align-items: flex-start; gap: 6px; line-height: 1.4;
+        /* 路線交通區塊 (Naver Map 風格) */
+        .transit-block {
+            display: flex; justify-content: center; align-items: center;
+            height: 44px; margin-top: -5px; margin-bottom: -5px; position: relative; z-index: 1;
         }
+        .transit-line { position: absolute; width: 2px; height: 100%; background-color: #D1D1D6; z-index: 0; }
+        .transit-badge {
+            background-color: #FFFFFF; color: #5c5c5e; font-size: 12.5px; font-weight: 700;
+            padding: 6px 14px; border-radius: 20px; z-index: 1; border: 1px solid #E5E5EA;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 6px;
+        }
+
         .info-alert {
             background-color: #FFF0F0; color: #FF3B30; padding: 10px 12px;
             border-radius: 10px; font-size: 13px; font-weight: 600; margin-bottom: 12px;
             display: flex; align-items: flex-start; gap: 6px; line-height: 1.4;
         }
 
-        /* 圖文導覽內容 */
         .guide-content { background-color: #F9F9FB; border-radius: 12px; padding: 14px; margin-bottom: 12px; border-left: 3px solid #D1D1D6; }
         .guide-text { font-size: 13.5px; color: #3A3A3C; line-height: 1.6; }
         
-        /* 標籤 */
         .highlight { display: inline-block; font-size: 11px; padding: 4px 8px; border-radius: 6px; margin: 4px 4px 0 0; font-weight: 700; color: white; }
         .hl-food { background-color: var(--tag-food); }
         .hl-order { background-color: var(--tag-order); }
@@ -151,7 +153,7 @@
             <p><strong>訂位代碼：</strong>[童]O2G4PL /[吳]TDKW4U</p>
             <p style="color:#FF3B30; font-size:12px; margin-top:8px;">*無提供飛機餐</p>
         </div>
-        <a href="https://www.eastarjet.com/newstar/PGWHB00003" target="_blank" class="nav-btn" style="background-color: #D32F2F; color: white;">🌐 前往 易斯達航空 官網</a>
+        <a href="https://www.eastarjet.com/" target="_blank" class="nav-btn" style="background-color: #D32F2F; color: white;">🌐 前往 易斯達航空 官網</a>
     </div>
 
     <!-- 住宿資訊 -->
@@ -183,102 +185,116 @@
             {
                 dayName: "Day 1", fullDate: "04/15 (三)", weather: "🌤️ 15°C | 降雨機率 10%",
                 events:[
-                    { timeRange: "06:10 ~ 07:40", krName: "김해국제공항", title: "抵達金海機場", typeName: "機場", desc: "入境，此刻起以韓國時間計算" },
-                    { timeRange: "08:10 ~ 08:20", krName: "207스테이 코리아", title: "民宿-207STAY KOREA", typeName: "寄放", desc: "寄放行李，貴重物品記得帶走", link: "https://naver.me/xl0H8R3M" },
+                    { 
+                        timeRange: "06:10 ~ 07:40", krName: "김해국제공항", title: "抵達金海機場", typeName: "機場", desc: "入境，此刻起以韓國時間計算",
+                        transit: "🚇 輕軌轉地鐵 / 約 45 分鐘"
+                    },
+                    { 
+                        timeRange: "08:10 ~ 08:20", krName: "207스테이 코리아", title: "民宿-207STAY KOREA", typeName: "寄放", desc: "先寄放行李，貴重物品記得帶走", link: "https://naver.me/xl0H8R3M",
+                        transit: "🚇 地鐵 (西面→新世界) / 約 35 分鐘"
+                    },
                     { 
                         timeRange: "09:00 ~ 13:00", krName: "스파랜드 센텀시티", title: "新世界Spa Land 汗蒸幕", typeName: "放鬆", 
-                        guideDesc: "韓國最高級的五星級汗蒸幕，完美舒緩紅眼航班的疲勞。<br><span class='highlight hl-order'>必體驗：戴羊角頭、喝甜米釀、吃烤雞蛋</span>", 
-                        link: "https://naver.me/5Q372Aqt" 
+                        guideDesc: "韓國最高級的五星級汗蒸幕，完美舒緩紅眼航班的疲勞。<br><span class='highlight hl-order'>必體驗：戴羊角頭、喝甜米釀、吃烤雞蛋</span>", link: "https://naver.me/5Q372Aqt",
+                        transit: "🚶 步行 (同建築內) / 約 5 分鐘"
                     },
                     { 
-                        timeRange: "13:00 ~ 16:00", krName: "거대곰탕 신세계 센텀시티점", title: "巨大牛骨湯", typeName: "午餐", 
-                        desc: "新世界百貨店 B1美食廣場/12號出口附近",
-                        guideDesc: "釜山頂級韓牛餐廳。湯頭熬煮數十小時，呈現如牛奶般的濃郁乳白色，入口滑順香醇。<br><span class='highlight hl-food'>必吃：極品濃郁韓牛骨湯</span>", 
-                        link: "https://naver.me/5chuGOAf" 
+                        timeRange: "13:00 ~ 16:00", krName: "거대곰탕 신세계 센텀시티점", title: "巨大牛骨湯", typeName: "午餐", desc: "新世界百貨店 B1美食廣場/12號出口附近",
+                        guideDesc: "釜山頂級韓牛餐廳。湯頭熬煮數十小時，呈現如牛奶般的濃郁乳白色，入口滑順香醇。<br><span class='highlight hl-food'>必吃：極品濃郁韓牛骨湯</span>", link: "https://naver.me/5chuGOAf",
+                        transit: "🚇 地鐵 (新世界→西面) / 約 35 分鐘"
                     },
-                    { timeRange: "17:00 ~ 17:30", krName: "207스테이 코리아", title: "民宿 Check-in", typeName: "住宿", desc: "安頓後自由活動，可去西面逛街", link: "https://naver.me/xl0H8R3M" },
                     { 
-                        timeRange: "19:00 ~ 21:00", krName: "올드맨션 서면전포점", title: "老花園 Old Mansion (烤肉)", typeName: "晚餐", 
-                        desc: "備案：83獬豸",
+                        timeRange: "17:00 ~ 17:30", krName: "207스테이 코리아", title: "民宿 Check-in", typeName: "住宿", desc: "安頓後自由活動，可去西面商圈逛街", link: "https://naver.me/xl0H8R3M",
+                        transit: "🚶 步行 / 約 8 分鐘"
+                    },
+                    { 
+                        timeRange: "19:00 ~ 21:00", krName: "올드맨션 서면전포점", title: "老花園 Old Mansion (烤肉)", typeName: "晚餐", desc: "備案：83獬豸",
                         notice: "⚠️ 只能刷卡！最後點餐為 21:30 (備案餐廳為23:40)。請注意地鐵末班車為 23:59！",
-                        guideDesc: "主打熟成豬肉，肉汁豐盈且富有嚼勁，全程有專人代烤服務。<br><span class='highlight hl-food'>必吃：頂級厚切五花肉、豬頸肉</span>", 
-                        link: "https://naver.me/GoD7vQS0" 
+                        guideDesc: "主打熟成豬肉，肉汁豐盈且富有嚼勁，全程有專人代烤服務。<br><span class='highlight hl-food'>必吃：頂級厚切五花肉、豬頸肉</span>", link: "https://naver.me/GoD7vQS0" 
                     }
                 ]
             },
             {
                 dayName: "Day 2", fullDate: "04/16 (四)", weather: "☀️ 17°C | 降雨機率 0%",
                 events:[
-                    { timeRange: "09:30 ~ 10:00", krName: "207스테이 코리아", title: "民宿起床出門", typeName: "行程", desc: "預計10點出門", link: "https://naver.me/xl0H8R3M" },
+                    { 
+                        timeRange: "09:30 ~ 10:00", krName: "207스테이 코리아", title: "民宿起床出門", typeName: "行程", desc: "預計10點出門", link: "https://naver.me/xl0H8R3M",
+                        transit: "🚶 步行 / 約 5 分鐘"
+                    },
                     { 
                         timeRange: "10:10 ~ 11:10", krName: "오프커스 베이커리 카페", title: "Off Keoseu 咖啡廳", typeName: "早餐", 
-                        guideDesc: "西面超大型複合式咖啡廳。先稍微墊個胃。<br><span class='highlight hl-order'>必點：各式可頌、冰美式</span>", 
-                        link: "https://naver.me/xQe286YO" 
+                        guideDesc: "西面超大型複合式咖啡廳。先稍微墊個胃。<br><span class='highlight hl-order'>必點：各式可頌、冰美式</span>", link: "https://naver.me/xQe286YO",
+                        transit: "🚇 地鐵 (西面→海雲台) / 約 45 分鐘"
                     },
                     { 
                         timeRange: "11:50 ~ 13:50", krName: "해운대 전통시장", title: "海雲台傳統市場", typeName: "逛街", 
-                        guideDesc: "聚集釜山道地小吃的熱鬧街區，價格親民。<br><span class='highlight hl-food'>必吃：堅果糖餅、盲鰻、辣炒年糕、魚板串</span>", 
-                        link: "https://naver.me/GeUO60dx" 
+                        guideDesc: "聚集釜山道地小吃的熱鬧街區，價格親民。<br><span class='highlight hl-food'>必吃：堅果糖餅、盲鰻、辣炒年糕、魚板串</span>", link: "https://naver.me/GeUO60dx",
+                        transit: "🚶 步行或搭乘公車 / 約 15 分鐘"
                     },
                     { 
                         timeRange: "14:30 ~ 14:40", krName: "해운대 블루라인파크 (미포)", title: "海岸列車 (尾浦→青沙浦)", typeName: "交通", 
-                        transportInfo: "🚌 車程約10分鐘 / 每半小時一班",
-                        notice: "⚠️ 務必於發車前 10 分鐘抵達並排隊完畢！",
-                        guideDesc: "釜山最夯的復古海岸列車！軌道沿著絕美海岸線行駛。<br><span class='highlight hl-buy'>必拍：復古車廂與無敵海景合影</span>", 
-                        link: "https://naver.me/Gwpsyvot" 
+                        notice: "⚠️ 務必於發車前 10 分鐘抵達並排隊完畢！(半小時一班)",
+                        guideDesc: "釜山最夯的復古海岸列車！軌道沿著絕美海岸線行駛。<br><span class='highlight hl-buy'>必拍：復古車廂與無敵海景合影</span>", link: "https://naver.me/Gwpsyvot",
+                        transit: "🚋 海岸景觀列車 / 約 10 分鐘"
                     },
-                    { timeRange: "15:00 ~ 16:00", krName: "다이아트 커피", title: "DIART coffee", typeName: "下午茶", desc: "在青沙浦喝咖啡、看海、休息", link: "https://naver.me/Gxk1OJez" },
+                    { 
+                        timeRange: "15:00 ~ 16:00", krName: "다이아트 커피", title: "DIART coffee", typeName: "下午茶", desc: "在青沙浦喝咖啡、看海、休息", link: "https://naver.me/Gxk1OJez",
+                        transit: "🚋 海岸景觀列車 / 約 10 分鐘"
+                    },
                     { 
                         timeRange: "16:30 ~ 16:40", krName: "해운대 블루라인파크 (청사포)", title: "海岸列車回程 (青沙浦→尾浦)", typeName: "交通", 
-                        transportInfo: "🚌 車程約10分鐘 / 每半小時一班",
-                        notice: "⚠️ 務必於發車前 10 分鐘抵達並排隊完畢！"
+                        notice: "⚠️ 務必於發車前 10 分鐘抵達並排隊完畢！(半小時一班)",
+                        transit: "🚌 步行轉公車及地鐵 / 約 1 小時"
                     },
-                    { timeRange: "17:30 ~ 19:30", krName: "207스테이 코리아", title: "回民宿 / 自由活動", typeName: "行程", transportInfo: "🚌 從尾浦站回到民宿交通約 1 小時", link: "https://naver.me/xl0H8R3M"},
+                    { 
+                        timeRange: "17:30 ~ 19:30", krName: "207스테이 코리아", title: "回民宿 / 自由活動", typeName: "行程", link: "https://naver.me/xl0H8R3M",
+                        transit: "🚶 步行 / 約 8 分鐘"
+                    },
                     { 
                         timeRange: "20:00 ~ 22:00", krName: "제줏간 서면점", title: "濟州間烤肉", typeName: "晚餐", 
                         notice: "⚠️ 最後點餐為 23:00。請注意地鐵末班車為 23:59！",
-                        guideDesc: "把整座濟州島搬進釜山！超好拍的石牆與橘子樹裝潢。<br><span class='highlight hl-order'>必點：濟州黑豬肉、獨門鯷魚醬、韓式炒飯</span>", 
-                        link: "https://naver.me/G386sb6m" 
+                        guideDesc: "把整座濟州島搬進釜山！超好拍的石牆與橘子樹裝潢。<br><span class='highlight hl-order'>必點：濟州黑豬肉、獨門鯷魚醬、韓式炒飯</span>", link: "https://naver.me/G386sb6m",
+                        transit: "🚶 步行 / 約 5 分鐘"
                     },
                     { 
                         timeRange: "22:00 ~ 22:30", krName: "포토피아 마트", title: "Photopia 24H超市", typeName: "購物", 
-                        guideDesc: "感受當地超市氛圍，買宵夜或伴手禮帶回台灣。<br><span class='highlight hl-buy'>必買：韓國洋芋片、袋裝果汁</span>", 
-                        link: "https://naver.me/FsRJe9x7" 
+                        guideDesc: "感受當地超市氛圍，買宵夜或伴手禮帶回台灣。<br><span class='highlight hl-buy'>必買：韓國洋芋片、袋裝果汁</span>", link: "https://naver.me/FsRJe9x7" 
                     }
                 ]
             },
             {
                 dayName: "Day 3", fullDate: "04/17 (五)", weather: "☁️ 16°C | 降雨機率 20%",
                 events:[
-                    { timeRange: "10:30 ~ 11:00", krName: "207스테이 코리아", title: "民宿退房", typeName: "住宿", desc: "11點前退房出門", link: "https://naver.me/xl0H8R3M" },
-                    { timeRange: "11:30 ~ 11:40", krName: "더베이먼트 호텔", title: "飯店-The Bayment", typeName: "寄放", transportInfo: "🚌 從民宿到飯店交通約 30 分鐘", desc: "轉移寄放行李", link: "https://naver.me/xP8eF1LR" },
+                    { 
+                        timeRange: "10:30 ~ 11:00", krName: "207스테이 코리아", title: "民宿退房", typeName: "住宿", desc: "11點前退房出門", link: "https://naver.me/xl0H8R3M",
+                        transit: "🚇 地鐵 (西面→海雲台) / 約 40 分鐘"
+                    },
+                    { 
+                        timeRange: "11:30 ~ 11:40", krName: "더베이먼트 호텔", title: "飯店-The Bayment", typeName: "寄放", desc: "先寄放行李", link: "https://naver.me/xP8eF1LR",
+                        transit: "🚶 步行 / 約 8 分鐘"
+                    },
                     { 
                         timeRange: "11:40 ~ 13:10", krName: "용문", title: "龍門 (中式料理)", typeName: "午餐", 
-                        guideDesc: "在地人推薦的韓式中華料理老店。份量算大，注意點餐。<br><span class='highlight hl-order'>必點：韓式黑醬炸醬麵、酥脆咕咾肉(糖醋肉)</span>", 
-                        link: "https://naver.me/G2EwQm8v" 
+                        guideDesc: "在地人推薦的韓式中華料理老店。份量算大，注意點餐。<br><span class='highlight hl-order'>必點：韓式黑醬炸醬麵、酥脆咕咾肉(糖醋肉)</span>", link: "https://naver.me/G2EwQm8v",
+                        transit: "🚇 搭地鐵轉公車 / 約 50 分鐘"
                     },
                     { 
                         timeRange: "13:40 ~ 15:40", krName: "아르떼뮤지엄 부산", title: "Arte Museum 光影展覽館", typeName: "景點", 
-                        transportInfo: "🚌 從餐廳出發，搭地鐵轉公車約 30 分鐘",
-                        guideDesc: "韓國最大規模沉浸式多媒體藝術館。將海浪、星空與花海透過聲光投影在整個空間。", 
-                        link: "https://naver.me/Fifsvnna" 
+                        guideDesc: "韓國最大規模沉浸式多媒體藝術館。將海浪、星空與花海透過聲光投影在整個空間。", link: "https://naver.me/Fifsvnna",
+                        transit: "🚌 搭乘公車 (需轉車) / 約 40 分鐘"
                     },
                     { 
-                        timeRange: "16:10 ~ 18:40", krName: "흰여울문화마을", title: "白淺灘文化村", typeName: "景點", 
-                        desc: "包含：咖啡廳-Aether、海岸隧道",
-                        transportInfo: "🚌 從展覽館出發，搭公車(需轉車)約 40 分鐘",
-                        guideDesc: "沿著海岸懸崖建造的小村落，被譽為「釜山的聖托里尼」。<br><span class='highlight hl-buy'>必拍：海岸隧道剪影照</span>", 
-                        link: "https://naver.me/xLWAPvjS" 
+                        timeRange: "16:10 ~ 18:40", krName: "흰여울문화마을", title: "白淺灘文化村", typeName: "景點", desc: "包含：咖啡廳-Aether、海岸隧道",
+                        guideDesc: "沿著海岸懸崖建造的小村落，被譽為「釜山的聖托里尼」。<br><span class='highlight hl-buy'>必拍：海岸隧道剪影照</span>", link: "https://naver.me/xLWAPvjS",
+                        transit: "🚌 公車直達海雲台 / 約 50 分鐘"
                     },
                     { 
-                        timeRange: "18:40 ~ 20:00", krName: "더베이먼트 호텔", title: "飯店 Check-in", typeName: "住宿", 
-                        transportInfo: "🚌 從白淺灘搭公車回飯店約 30 分鐘",
-                        desc: "回飯店安頓與自由活動", link: "https://naver.me/xP8eF1LR" 
+                        timeRange: "18:40 ~ 20:00", krName: "더베이먼트 호텔", title: "飯店 Check-in", typeName: "住宿", desc: "回飯店安頓與自由活動", link: "https://naver.me/xP8eF1LR",
+                        transit: "🚇 地鐵 (海雲台→札嘎其) / 約 55 分鐘"
                     },
                     { 
                         timeRange: "20:00 ~ 21:30", krName: "부평족발", title: "富平豬腳", typeName: "晚餐", 
-                        guideDesc: "富平洞豬腳街的超人氣名店！釜山特有的吃法，清爽解膩。<br><span class='highlight hl-food'>必吃：涼拌豬腳(冷菜豬腳)、辣味豬腳</span>", 
-                        link: "https://naver.me/xeASv1sX" 
+                        guideDesc: "富平洞豬腳街的超人氣名店！釜山特有的吃法，清爽解膩。<br><span class='highlight hl-food'>必吃：涼拌豬腳(冷菜豬腳)、辣味豬腳</span>", link: "https://naver.me/xeASv1sX" 
                     }
                 ]
             },
@@ -286,53 +302,64 @@
                 dayName: "Day 4", fullDate: "04/18 (六)", weather: "🌤️ 18°C | 降雨機率 10%",
                 events:[
                     { 
-                        timeRange: "10:30 ~ 15:30", krName: "남포동 상권", title: "南浦商圈 逛街吃飯", typeName: "購物", 
-                        desc: "路線：富平罐頭/國際/扎嘎其市場→BIFF廣場→光復路→樂天百貨",
-                        guideDesc: "釜山最大購物聖地！吃遍街頭小吃，再到國際市場挖寶，最後至樂天超市大採購。<br><span class='highlight hl-buy'>必買：韓國海苔、泡麵、零食伴手禮</span>", 
-                        link: "https://naver.me/FDnCfOLW" 
+                        timeRange: "10:30 ~ 15:30", krName: "남포동 상권", title: "南浦商圈 逛街吃飯", typeName: "購物", desc: "路線：富平罐頭/國際/扎嘎其市場→BIFF廣場→光復路→樂天百貨",
+                        guideDesc: "釜山最大購物聖地！吃遍街頭小吃，再到國際市場挖寶，最後至樂天超市大採購。<br><span class='highlight hl-buy'>必買：韓國海苔、泡麵、零食伴手禮</span>", link: "https://naver.me/FDnCfOLW",
+                        transit: "🚌 從南浦搭乘公車前往 / 約 20 分鐘"
                     },
                     { 
                         timeRange: "16:00 ~ 17:30", krName: "송도해상케이블카", title: "松島纜車", typeName: "景點", 
-                        transportInfo: "🚌 建議 16 點後前往，搭乘公車車程約 30 分鐘",
-                        guideDesc: "橫跨海面的跨海纜車，建議選擇「水晶車廂」感受腳下就是大海的刺激感！", 
-                        link: "https://naver.me/Fmf6KBhZ" 
+                        guideDesc: "橫跨海面的跨海纜車，建議選擇「水晶車廂」感受腳下就是大海的刺激感！", link: "https://naver.me/Fmf6KBhZ",
+                        transit: "🚌 搭乘公車轉地鐵回飯店 / 約 60 分鐘"
                     },
-                    { timeRange: "18:00 ~ 20:00", krName: "더베이먼트 호텔", title: "飯店 自由活動", typeName: "行程", desc: "回飯店休息整理戰利品", link: "https://naver.me/xP8eF1LR" },
+                    { 
+                        timeRange: "18:00 ~ 20:00", krName: "더베이먼트 호텔", title: "飯店 自由活動", typeName: "行程", desc: "回飯店休息整理戰利品", link: "https://naver.me/xP8eF1LR",
+                        transit: "🚇 地鐵 (海雲台→札嘎其) / 約 55 分鐘"
+                    },
                     { 
                         timeRange: "20:00 ~ 21:30", krName: "백화양곱창", title: "百花烤腸", typeName: "晚餐", 
                         notice: "⚠️ 營業至半夜 00 點",
-                        guideDesc: "札嘎其市場旁的傳奇老字號！鐵板上滋滋作響的牛腸香氣四溢。<br><span class='highlight hl-order'>必點：綜合烤牛腸(先鹽烤後醬烤)、靈魂炒飯</span>", 
-                        link: "https://naver.me/F5D1zR9o" 
+                        guideDesc: "札嘎其市場旁的傳奇老字號！鐵板上滋滋作響的牛腸香氣四溢。<br><span class='highlight hl-order'>必點：綜合烤牛腸(先鹽烤後醬烤)、靈魂炒飯</span>", link: "https://naver.me/F5D1zR9o" 
                     }
                 ]
             },
             {
                 dayName: "Day 5", fullDate: "04/19 (日)", weather: "☀️ 19°C | 降雨機率 0%",
                 events:[
-                    { timeRange: "09:30 ~ 10:00", krName: "더베이먼트 호텔", title: "飯店退房", typeName: "住宿", desc: "10點前退房", link: "https://naver.me/xP8eF1LR" },
-                    { timeRange: "10:15 ~ 10:30", krName: "롯데렌터카", title: "樂天租車", typeName: "交通", desc: "取車開始自駕行", link: "https://naver.me/5xjpJw7F" },
+                    { 
+                        timeRange: "09:30 ~ 10:00", krName: "더베이먼트 호텔", title: "飯店退房", typeName: "住宿", desc: "10點前退房", link: "https://naver.me/xP8eF1LR",
+                        transit: "🚶 步行 / 約 10 分鐘"
+                    },
+                    { 
+                        timeRange: "10:15 ~ 10:30", krName: "롯데렌터카", title: "樂天租車", typeName: "交通", desc: "取車開始自駕行", link: "https://naver.me/5xjpJw7F",
+                        transit: "🚗 駕車 / 約 40 分鐘"
+                    },
                     { 
                         timeRange: "11:00 ~ 13:00", krName: "감천문화마을", title: "甘川洞文化村", typeName: "景點", 
-                        guideDesc: "滿山彩色階梯式房屋，被稱為「韓國的馬丘比丘」。<br><span class='highlight hl-buy'>必拍：與小王子與沙漠狐狸雕像合影</span>", 
-                        link: "https://naver.me/FPn5Lbco" 
+                        guideDesc: "滿山彩色階梯式房屋，被稱為「韓國的馬丘比丘」。<br><span class='highlight hl-buy'>必拍：與小王子與沙漠狐狸雕像合影</span>", link: "https://naver.me/FPn5Lbco",
+                        transit: "🚗 駕車 / 約 50 分鐘"
                     },
                     { 
                         timeRange: "14:00 ~ 15:30", krName: "기장 해녀촌", title: "海女之家", typeName: "午餐", 
-                        guideDesc: "坐在海邊品嚐海女們親手捕撈的生猛海鮮！體驗最道地的釜山漁村文化。<br><span class='highlight hl-food'>必吃：鮮甜熱鮑魚粥、生章魚、綜合海鮮盤</span>", 
-                        link: "https://naver.me/xrSQ8eJW" 
+                        guideDesc: "坐在海邊品嚐海女們親手捕撈的生猛海鮮！體驗最道地的釜山漁村文化。<br><span class='highlight hl-food'>必吃：鮮甜熱鮑魚粥、生章魚、綜合海鮮盤</span>", link: "https://naver.me/xrSQ8eJW",
+                        transit: "🚗 駕車 / 約 15 分鐘"
                     },
                     { 
                         timeRange: "15:40 ~ 16:40", krName: "해동용궁사", title: "海東龍宮寺", typeName: "景點", 
-                        guideDesc: "韓國唯一建在海岸岩石上的寺廟，景色壯麗無比。據說在這裡誠心許願非常靈驗。", 
-                        link: "https://naver.me/58NdWaSm" 
+                        guideDesc: "韓國唯一建在海岸岩石上的寺廟，景色壯麗無比。據說在這裡誠心許願非常靈驗。", link: "https://naver.me/58NdWaSm",
+                        transit: "🚗 駕車 / 約 5 分鐘"
                     },
                     { 
                         timeRange: "16:50 ~ 17:50", krName: "스카이라인루지 부산", title: "Skyline Luge 斜坡車", typeName: "玩樂", 
-                        guideDesc: "大人小孩都能瘋狂的斜坡滑車！搭乘吊椅上山，然後沿著多個彎道一路飆風衝刺下山。", 
-                        link: "https://naver.me/IDFUcLWo" 
+                        guideDesc: "大人小孩都能瘋狂的斜坡滑車！搭乘吊椅上山，然後沿著多個彎道一路飆風衝刺下山。", link: "https://naver.me/IDFUcLWo",
+                        transit: "🚗 駕車前往機場 / 約 50 分鐘"
                     },
-                    { timeRange: "18:50 ~ 19:00", krName: "롯데렌터카 김해공항", title: "樂天租車 機場站", typeName: "交通", desc: "還車，準備前往機場", link: "https://naver.me/xYN6tx23" },
-                    { timeRange: "19:05 ~ 22:00", krName: "김해국제공항", title: "金海機場 辦理登機", typeName: "機場", desc: "搭乘易斯達航空回溫暖的家！", link: "https://naver.me/GNRjwFwb" }
+                    { 
+                        timeRange: "18:50 ~ 19:00", krName: "롯데렌터카 김해공항", title: "樂天租車 機場站", typeName: "交通", desc: "還車，準備前往機場", link: "https://naver.me/xYN6tx23",
+                        transit: "🚶 步行 / 約 5 分鐘"
+                    },
+                    { 
+                        timeRange: "19:05 ~ 22:00", krName: "김해국제공항", title: "金海機場 辦理登機", typeName: "機場", desc: "搭乘易斯達航空回溫暖的家！", link: "https://naver.me/GNRjwFwb" 
+                    }
                 ]
             }
         ];
@@ -373,7 +400,6 @@
             day.events.forEach(event => {
                 let krHtml = event.krName ? `<div class="kr-name">🇰🇷 ${event.krName}</div>` : '';
                 let descHtml = event.desc ? `<div class="desc">${event.desc}</div>` : '';
-                let transportHtml = event.transportInfo ? `<div class="transport-info">${event.transportInfo}</div>` : '';
                 let noticeHtml = event.notice ? `<div class="info-alert">${event.notice}</div>` : '';
                 let guideHtml = event.guideDesc ? `<div class="guide-content"><div class="guide-text">${event.guideDesc}</div></div>` : '';
                 let navBtn = event.link ? `<a href="${event.link}" target="_blank" class="nav-btn">📍 開啟 NAVER 導航</a>` : '';
@@ -387,12 +413,24 @@
                         ${krHtml}
                         <div class="title">${event.title}</div>
                         ${descHtml}
-                        ${transportHtml}
                         ${noticeHtml}
                         ${guideHtml}
                         ${navBtn}
                     </div>
                 `;
+                
+                // 如果有交通資訊，就在卡片下方加上路線連接標籤
+                if (event.transit) {
+                    eventsHtml += `
+                        <div class="transit-block">
+                            <div class="transit-line"></div>
+                            <div class="transit-badge">${event.transit}</div>
+                        </div>
+                    `;
+                } else {
+                    // 若無交通區塊(例如當天最後一個行程)，補一點下邊距
+                    eventsHtml += `<div style="height:16px;"></div>`;
+                }
             });
             listContainer.innerHTML = eventsHtml;
             window.scrollTo({ top: 0, behavior: 'smooth' });
