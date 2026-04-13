@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>釜山自由行 2026</title>
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#F2F2F7">
     <style>
         /* iOS 原生極簡風格 */
@@ -106,6 +105,14 @@
             font-size: 14px; font-weight: 700; transition: background 0.2s; margin-top: 5px;
         }
         .nav-btn:active { background-color: #E5E5EA; }
+        
+        /* APP 下載小按鈕 */
+        .app-btn {
+            display: inline-block; background-color: #E5E5EA; color: var(--text-main);
+            font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 8px;
+            text-decoration: none; margin-right: 6px; margin-top: 5px; transition: 0.2s;
+        }
+        .app-btn:active { background-color: #D1D1D6; }
 
         /* 大綱與攻略卡片 */
         .info-box { background: var(--card-bg); border-radius: var(--radius); padding: 18px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
@@ -113,6 +120,7 @@
         .info-box p { font-size: 14px; margin-bottom: 6px; color: #3A3A3C; line-height: 1.5; }
         .info-box strong { color: var(--accent-color); font-weight: 700; }
         .info-box ul { padding-left: 20px; font-size: 14px; color: #3A3A3C; line-height: 1.6; }
+        .guide-link { color: #007AFF; font-size: 13px; text-decoration: none; display: block; margin-top: 6px; font-weight: 600;}
         
         .overview-day-title { font-weight: 800; color: var(--accent-color); margin-bottom: 8px; font-size: 16px;}
         .overview-item { display: flex; gap: 8px; margin-bottom: 10px; font-size: 14px; color: #3A3A3C; font-weight: 600; }
@@ -153,6 +161,81 @@
     <!-- 3. 攻略分頁 -->
     <div id="tab-guide" class="content">
         <div class="info-box">
+            <div class="info-title">💳 T-money 與 WOWPASS 比較</div>
+            <div style="margin-bottom: 12px;">
+                <strong>T-money (韓國交通卡)</strong><br>
+                <span style="font-size: 13px; color: #555;">• 適合對象：搭乘地鐵、公車、計程車或超商買東西的必備卡。<br>• 怎麼申辦：各大超商(CU, GS25, 7-11)皆可購買空卡。<br>• 儲值方式：僅能使用「韓元現金」儲值。</span><br>
+                <a href="https://tw.trip.com/blog/%E9%9F%93%E5%9C%8B%E4%BA%A4%E9%80%9A%E5%8D%A1/?&Allianceid=6784723&SID=278478355&trip_sub1=23310501775&trip_sub3=CjwKCAjwhe3OBhABEiwA6392zM_mRyiQ2965Dm4ous6qdWy6upzO11N4_1esCEquL2Pwz9u8qtraiRoCO9EQAvD_BwE&gad_source=1" target="_blank" class="guide-link">🔗 了解更多 T-money 攻略</a>
+            </div>
+            <div>
+                <strong>WOWPASS (現金卡+交通卡)</strong><br>
+                <span style="font-size: 13px; color: #555;">• 適合對象：不想帶太多現金，喜歡無現金刷卡消費的旅客。<br>• 怎麼申辦：機場或特定地鐵站的 WOWPASS 機台申辦。<br>• 儲值方式：可直接投入「台幣(TWD)」自動換匯儲值為韓元，並可綁定 APP 看餘額。</span><br>
+                <a href="https://3711cactus.com/2026wowpass-kpsgr8dm/" target="_blank" class="guide-link">🔗 了解更多 WOWPASS 攻略</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">📱 必下載實用 APP</div>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 12px;">
+                    <strong>1. T-money (BucaCheck)</strong>：感應手機查餘額<br>
+                    <a href="https://apps.apple.com/tw/app/bucacheck-korea-transit-card/id1182740263" target="_blank" class="app-btn">🍎 App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.thefin.bucacheck" target="_blank" class="app-btn">🤖 Google Play</a>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong>2. Naver Map</strong>：韓國最強導航(Google Map無法導航)<br>
+                    <a href="https://apps.apple.com/app/id311867728" target="_blank" class="app-btn">🍎 App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.nhn.android.nmap" target="_blank" class="app-btn">🤖 Google Play</a>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong>3. Papago</strong>：最精準的中韓語音/圖片翻譯神器<br>
+                    <a href="https://apps.apple.com/tw/app/papago/id1147396652" target="_blank" class="app-btn">🍎 App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.naver.labs.translator" target="_blank" class="app-btn">🤖 Google Play</a>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong>4. Kakao T</strong>：叫計程車必備(可選上車付現)<br>
+                    <a href="https://apps.apple.com/tw/app/kakao-t/id981110422" target="_blank" class="app-btn">🍎 App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.kakao.taxi" target="_blank" class="app-btn">🤖 Google Play</a>
+                </li>
+                <li>
+                    <strong>5. WOWPASS</strong>：管理現金卡餘額<br>
+                    <a href="https://apps.apple.com/tw/app/wowpass/id1624552466" target="_blank" class="app-btn">🍎 App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.orange.wowpass" target="_blank" class="app-btn">🤖 Google Play</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">🧾 購物退稅注意事項</div>
+            <p>韓國單筆消費滿 <strong>15,000 韓元</strong> 即可退稅 (2024新制)。</p>
+            <ul style="margin-bottom: 10px;">
+                <li><strong>市區/店內退稅：</strong> 結帳時出示護照，店員可直接扣除稅額 (Immediate Tax Refund)，最方便！</li>
+                <li><strong>機場退稅：</strong> 若店家給退稅單，請務必保留好，提早到金海機場找「Tax Free」機台刷護照辦理。</li>
+            </ul>
+            <a href="https://www.threads.com/@niwu0410/post/DWWLV2uD4KU?xmt=AQF0KZ_sEU4tvAXF4aKGCtnFxmJw3Kf11lGUdRblKvpTUGHDogG_UvOMU4tF6TtAvgnlMLs&slof=1" target="_blank" class="guide-link">🔗 韓國退稅資料總整理</a>
+            <a href="https://www.threads.com/@baoche888/post/DXDEmAbE1MO?xmt=AQF0NwCLNfNUZGBia7il404Lln0vrmRXXtMvBYMN9Jxj5YJSAj_QjKxkYlzoNzb6JETxFTo&slof=1" target="_blank" class="guide-link">🔗 機場退稅機台教學</a>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">🛍️ 必買推薦</div>
+            <div style="margin-bottom: 15px;">
+                <strong>1. Olive Young (美妝保養)</strong><br>
+                <span style="font-size: 13px; color: #555;">MEDIPEEL膠原蛋白撕拉面膜、Torriden保濕棉片/精華、VT Reedle Shot微針精華、痘痘貼、fwee唇泥</span><br>
+                <a href="https://www.threads.com/@saromeow.25/post/DWlfTH2EeT1?xmt=AQF0DPRUUSBJwD0iz1itLiB1OpptmsObCBaANrxByYbdjKNEGo_3qHP6znhNFI-aS79LKJw&slof=1" target="_blank" class="guide-link">🔗 Olive Young 必買清單參考</a>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>2. 韓國藥局 (保健與修護)</strong><br>
+                <span style="font-size: 13px; color: #555;">Noscarna淡疤修復膏、Acnon痘痘藥、麗珠蘭同款 PDRN再生修護霜/護唇精華、B-max B群、各式解酒液</span><br>
+                <a href="https://www.threads.com/@baoche888/post/DXDEmAbE1MO?xmt=AQF0NwCLNfNUZGBia7il404Lln0vrmRXXtMvBYMN9Jxj5YJSAj_QjKxkYlzoNzb6JETxFTo&slof=1" target="_blank" class="guide-link">🔗 韓國藥局 必買清單參考</a>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <strong>3. 樂天超市 (零食伴手禮)</strong><br>
+                <span style="font-size: 13px; color: #555;">HBAF堅果、ZERO零卡水果軟糖、好麗友烏龜玉米脆片、Market O布朗尼、海太蜂蜜奶油洋芋片、韓國海苔、麻油</span><br>
+                <a href="https://www.threads.com/@alin_chuang/post/DVgCuZFk85z/%E9%9F%93%E5%9C%8B%E6%A8%82%E5%A4%A9%E8%B6%85%E5%B8%82%E5%BF%85%E8%B2%B7%E9%9B%B6%E9%A3%9F%E9%80%998%E6%A8%A3%E8%A6%AA%E6%B8%AC%E4%B8%8D%E8%B8%A9%E9%9B%B7" target="_blank" class="guide-link">🔗 樂天超市 必買清單參考</a>
+            </div>
+        </div>
+
+        <div class="info-box">
             <div class="info-title">🧥 四月穿搭建議</div>
             <p>釜山四月氣溫約 <strong>11°C~18°C</strong>，早晚溫差大且海濱風強。<br>建議採<strong>「洋蔥式穿搭」</strong>：內搭短袖或薄長袖，外加防風外套、風衣或輕薄針織衫。舒適好走的球鞋是必備！</p>
         </div>
@@ -162,31 +245,6 @@
             <p><strong>現金用途：</strong> 傳統市場小吃攤、儲值交通卡(T-money)、應急用。</p>
             <p><strong>建議金額：</strong> 每人換約 <strong>10萬~15萬韓元現金</strong> (約台幣 2500~3800元) 帶身上即可，其餘一律刷卡最划算。</p>
         </div>
-        <div class="info-box">
-            <div class="info-title">🎁 必買伴手禮推薦</div>
-            <ul>
-                <li><strong>美妝保養：</strong> Olive Young (痘痘貼、Torriden精華、棉片)</li>
-                <li><strong>樂天超市：</strong> HBAF堅果、零卡軟糖、韓國海苔、麻油、Market O布朗尼</li>
-                <li><strong>特色伴手禮：</strong> 釜山紅蟹麵、甘川洞小王子文創周邊</li>
-            </ul>
-        </div>
-        <div class="info-box">
-            <div class="info-title">📱 必下載實用 APP</div>
-            <ul>
-                <li><strong>Naver Map：</strong> 韓國最強導航 (Google Map在韓國無法導航)</li>
-                <li><strong>Papago：</strong> 最精準的中韓語音/圖片翻譯神器</li>
-                <li><strong>Kakao T：</strong> 叫計程車必備 (可選上車付現)</li>
-                <li><strong>WOWPASS：</strong> 如果有辦卡，可下載管理餘額</li>
-            </ul>
-        </div>
-        <div class="info-box">
-            <div class="info-title">🧾 購物退稅注意事項</div>
-            <p>韓國單筆消費滿 <strong>15,000 韓元</strong> 即可退稅 (2024新制)。</p>
-            <ul>
-                <li><strong>市區/店內退稅：</strong> 結帳時出示護照，店員可直接扣除稅額 (Immediate Tax Refund)，最方便！</li>
-                <li><strong>機場退稅：</strong> 若店家給退稅單，請務必保留好，提早到金海機場找「Tax Free」機台刷護照辦理退稅。</li>
-            </ul>
-        </div>
     </div>
 
     <!-- 4. 航班資訊 -->
@@ -195,7 +253,7 @@
         <div class="info-box">
             <div class="info-title">✈️ 去程：04/15 (三)</div>
             <p><strong>航空公司：</strong> 易斯達航空 (Eastar Jet)</p>
-            <p><strong>時間：</strong> 02:40 桃園(TPE) ➔ 06:10 金海(PUS)</p>
+            <p><strong>時間：</strong> 02:40 桃園(TPE) <strong>第一航廈</strong> ➔ 06:10 金海(PUS)</p>
             <p><strong>訂位代碼：</strong>[童]TF5M5B / [吳]QYF1GQ</p>
             
             <!-- 去程行李區塊 -->
@@ -212,12 +270,12 @@
         <div class="info-box">
             <div class="info-title">✈️ 回程：04/19 (日)</div>
             <p><strong>航空公司：</strong> 易斯達航空 (Eastar Jet)</p>
-            <p><strong>時間：</strong> 22:00 金海(PUS) ➔ 00:20 桃園(TPE)</p>
+            <p><strong>時間：</strong> 22:00 金海(PUS) ➔ 00:20 桃園(TPE) <strong>第一航廈</strong></p>
             <p><strong>訂位代碼：</strong>[童]O2G4PL / [吳]TDKW4U</p>
             
             <!-- 回程行李區塊 -->
             <div class="guide-content" style="margin-top: 12px; margin-bottom: 0; padding: 12px 14px;">
-                <p style="font-weight: 800; color: var(--accent-color); font-size: 13.5px; margin-bottom: 8px;">🧳 行టికి額度</p>
+                <p style="font-weight: 800; color: var(--accent-color); font-size: 13.5px; margin-bottom: 8px;">🧳 行李額度</p>
                 <p style="font-size: 13px; margin-bottom: 6px;"><strong>童家：</strong>手提 10kg × 4 ｜ 托運 15kg × 4</p>
                 <p style="font-size: 13px; margin-bottom: 0;"><strong>吳家：</strong>手提 10kg × 3 ｜ 托運 15kg × 3</p>
             </div>
@@ -228,7 +286,7 @@
         <a href="https://www.eastarjet.com/" target="_blank" class="nav-btn" style="background-color: #D32F2F; color: white;">🌐 前往 易斯達航空 官網</a>
     </div>
 
-    <!-- 5. 住宿資訊 (本次更新區塊) -->
+    <!-- 5. 住宿資訊 -->
     <div id="tab-hotel" class="content">
         <div class="info-box">
             <div class="info-title">🏨 4/15 - 4/17 (2晚)</div>
@@ -244,6 +302,7 @@
         <div class="info-box">
             <div class="info-title">🏨 4/17 - 4/19 (2晚)</div>
             <p><strong>名稱：</strong> The Bayment (더베이먼트 호텔)</p>
+            <p><strong>電話：</strong> 051-257-7001</p>
             <p><strong>入住：</strong> 4/17(五) 15:00 後</p>
             <p><strong>退房：</strong> 4/19(日) 11:00 前</p>
             <p style="color:#8E8E93; font-size:13px; margin-top:8px;">*出發與回程站點：地鐵 扎嘎其站(자갈치역)</p>
