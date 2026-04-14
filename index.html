@@ -106,7 +106,7 @@
         }
         .nav-btn:active { background-color: #E5E5EA; }
         
-        /* APP 下載小按鈕 (台灣特化) */
+        /* APP 下載小按鈕 */
         .app-btn {
             display: inline-block; background-color: #E5E5EA; color: var(--text-main);
             font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 8px;
@@ -178,7 +178,7 @@
             <div class="info-title">📱 必下載實用 APP</div>
             <ul style="list-style-type: none; padding-left: 0;">
                 <li style="margin-bottom: 12px;">
-                    <strong>1. T-money / MobileTmoney</strong>：交通卡管理與加值<br>
+                    <strong>1. MobileTmoney / T-money</strong>：感應手機查餘額<br>
                     <a href="https://apps.apple.com/tw/search?term=MobileTmoney" target="_blank" class="app-btn">🍎 App Store</a>
                     <a href="https://play.google.com/store/search?q=T-money&c=apps&hl=zh_TW" target="_blank" class="app-btn">🤖 Google Play</a>
                 </li>
@@ -199,8 +199,8 @@
                 </li>
                 <li>
                     <strong>5. WOWPASS</strong>：管理現金卡與交通卡餘額<br>
-                    <a href="https://apps.apple.com/tw/app/id1624552466" target="_blank" class="app-btn">🍎 App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.orange.wowpass&hl=zh_TW" target="_blank" class="app-btn">🤖 Google Play</a>
+                    <a href="https://apps.apple.com/tw/app/wowpass-%E4%B8%80%E5%8D%A1%E5%9C%A8%E6%89%8B%E6%9A%A2%E9%81%8A%E9%9F%93%E5%9C%8B/id1626691440" target="_blank" class="app-btn">🍎 App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.wow.wowpass&pcampaignid=web_share&hl=zh_TW" target="_blank" class="app-btn">🤖 Google Play</a>
                 </li>
             </ul>
         </div>
@@ -237,7 +237,7 @@
 
         <div class="info-box">
             <div class="info-title">🧥 四月穿搭建議</div>
-            <p>釜山四月氣溫約 <strong>11°C~18°C</strong>，早晚溫差大且海濱風強。<br>建議採<strong>「洋蔥式穿搭」</strong>：內搭短袖或薄長袖，外加防風外套、風衣或輕薄針織衫。舒適好走的球鞋是必備！</p>
+            <p>釜山四月氣溫約 <strong>12°C~22°C</strong>，早晚溫差大且海濱風強。<br>建議採<strong>「洋蔥式穿搭」</strong>：內搭短袖或薄長袖，外加防風外套、風衣或輕薄針織衫。舒適好走的球鞋是必備！</p>
         </div>
         <div class="info-box">
             <div class="info-title">💰 預備現金估算 (刷卡為主)</div>
@@ -335,9 +335,10 @@
     </div>
 
     <script>
+        // 即時天氣資料更新
         const itineraryData =[
             {
-                dayName: "Day 1", fullDate: "04/15 (三)", weather: "🌤️ 15°C | 降雨機率 10%",
+                dayName: "Day 1", fullDate: "04/15 (三)", weather: "☀️ 12~22°C | 降雨機率 0%",
                 events:[
                     { 
                         timeRange: "06:10 ~ 07:40", krName: "김해국제공항", title: "抵達金海機場", typeName: "機場", desc: "入境，此刻起以韓國時間計算",
@@ -368,7 +369,7 @@
                 ]
             },
             {
-                dayName: "Day 2", fullDate: "04/16 (四)", weather: "☀️ 17°C | 降雨機率 0%",
+                dayName: "Day 2", fullDate: "04/16 (四)", weather: "⛅ 13~20°C | 降雨機率 10%",
                 events:[
                     { 
                         timeRange: "09:30 ~ 10:00", krName: "207스테이 코리아", title: "民宿起床出門", typeName: "行程", desc: "預計10點出門", link: "https://naver.me/xl0H8R3M",
@@ -411,12 +412,12 @@
                     },
                     { 
                         timeRange: "22:00 ~ 22:30", krName: "포토피아 마트", title: "Photopia 24H超市", typeName: "購物", 
-                        guideDesc: "感受當地超市氛圍，買宵夜 또는 伴手禮帶回台灣。<br><span class='highlight hl-buy'>必買：韓國洋芋片、袋裝果汁</span>", link: "https://naver.me/FsRJe9x7" 
+                        guideDesc: "感受當地超市氛圍，買宵夜或伴手禮帶回台灣。<br><span class='highlight hl-buy'>必買：韓國洋芋片、袋裝果汁</span>", link: "https://naver.me/FsRJe9x7" 
                     }
                 ]
             },
             {
-                dayName: "Day 3", fullDate: "04/17 (五)", weather: "☁️ 16°C | 降雨機率 20%",
+                dayName: "Day 3", fullDate: "04/17 (五)", weather: "🌧️ 14~18°C | 降雨機率 60%",
                 events:[
                     { 
                         timeRange: "10:30 ~ 11:00", krName: "207스테이 코리아", title: "民宿退房", typeName: "住宿", desc: "11點前退房出門", link: "https://naver.me/xl0H8R3M",
@@ -452,7 +453,7 @@
                 ]
             },
             {
-                dayName: "Day 4", fullDate: "04/18 (六)", weather: "🌤️ 18°C | 降雨機率 10%",
+                dayName: "Day 4", fullDate: "04/18 (六)", weather: "⛅ 13~21°C | 降雨機率 20%",
                 events:[
                     { 
                         timeRange: "10:30 ~ 15:30", krName: "남포동 상권", title: "南浦商圈 逛街吃飯", typeName: "購物", desc: "路線：富平罐頭/國際/扎嘎其市場→BIFF廣場→光復路→樂天百貨",
@@ -477,7 +478,7 @@
                 ]
             },
             {
-                dayName: "Day 5", fullDate: "04/19 (日)", weather: "☀️ 19°C | 降雨機率 0%",
+                dayName: "Day 5", fullDate: "04/19 (日)", weather: "☁️ 13~22°C | 降雨機率 30%",
                 events:[
                     { 
                         timeRange: "09:30 ~ 10:00", krName: "더베이먼트 호텔", title: "飯店退房", typeName: "住宿", desc: "10點前退房", link: "https://naver.me/xP8eF1LR",
@@ -562,7 +563,9 @@
             }
 
             const day = itineraryData[dayIndex];
-            document.getElementById('weather-container').innerHTML = `☁️ ${day.fullDate} ｜ ${day.weather}`;
+            
+            // 天氣渲染 (已取消寫死的雲朵符號，直接讀取最新動態天氣)
+            document.getElementById('weather-container').innerHTML = `${day.fullDate} ｜ ${day.weather}`;
 
             const listContainer = document.getElementById('itinerary-list');
             let eventsHtml = '';
